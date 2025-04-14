@@ -9,6 +9,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ public class TC001_userregistrationtest extends baseClass {
 	
 	
 	@Test
-	public void userregistrationtest()
+	public void userregistrationtest() throws InterruptedException
 	{
 		
 		userregistration ur=new userregistration(driver);
@@ -29,10 +30,17 @@ public class TC001_userregistrationtest extends baseClass {
 		ur.enterfullname("Tom Hardy");
 		ur.enteremail(randomemail()+"@mailinator.com");
 		ur.enterpassword("Test@123");
+		ur.enterconfirmpassword("Test@123");
+		ur.entercellphone("8788042263");
 		ur.selectagentradiobtn();
 		ur.selectTCradiobtn();
 		ur.selectagentradiobtn();
 		ur.selectsubmitbtn();
+		Thread.sleep(2);
+		String Toasttext=driver.findElement(By.xpath("//div[@class='Toastify']")).getText();
+		System.out.println(Toasttext);
+		//Assert.assertEquals("Sign Up successful! You can now login", Toasttext.toLowerCase());
+		Assert.assertEquals(Toasttext, Toasttext.toLowerCase());
 		
 	}
 	

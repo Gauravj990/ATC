@@ -16,16 +16,16 @@ WebDriver driver;
 	public void setup()
 	{
 		driver=new ChromeDriver();
-		driver.get("https://qa-atc.valueaddsofttech.com/");
+		driver.get("https://qa-atc.procasaonboard.com/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
 	@AfterTest
-//	public void Teardown()
-//	{
-//		driver.quit();
-//	}
+	public void Teardown()
+	{
+		driver.quit();
+	}
 	
 	public String randomemail()
 	{
@@ -37,6 +37,11 @@ WebDriver driver;
 	{
 		String randominteger= RandomStringUtils.randomNumeric(9);
 		return randominteger;
+	}
+
+	public String captureScreen(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

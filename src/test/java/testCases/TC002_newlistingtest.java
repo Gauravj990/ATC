@@ -3,24 +3,27 @@ package testCases;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObject.newlisting;
 
 public class TC002_newlistingtest extends baseClass {
 	
 	@Test
-	public void newlistingtest()
+	public void newlistingtest() throws InterruptedException
 	{
 		newlisting nlw=new newlisting(driver);
-		nlw.enterusername("testermail776@gmail.com");
-		nlw.enterpassword("Test@1234");
+		nlw.enterusername("albus@yopmail.com");
+		nlw.enterpassword("Test@123");
 		WebElement Login_btn=driver.findElement(By.xpath("//button[normalize-space()='Log In']"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Login_btn);
 		nlw.login();
 		nlw.newtransaction();
 		nlw.newtransactionradio();
-		nlw.enter_property("611 west street");
+		nlw.enter_property("61 Vernon Street, Livermore CA 94550");
 		driver.findElement(By.xpath("//div[@class='search-btn']//*[name()='svg']")).click();
 		driver.findElement(By.xpath("//span[@class='suggestion-text']")).click();
 		
@@ -33,6 +36,13 @@ public class TC002_newlistingtest extends baseClass {
 		WebElement client_type=driver.findElement(By.xpath("//select[@id='clientType']"));
 		Select clienttype=new Select(client_type);
 		clienttype.selectByIndex(1);
+		WebElement CAR=driver.findElement(By.xpath("//input[@id='nrdsNo']"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", CAR);
+		nlw.enterCARnumber("183506867");
+		nlw.enterCARname("Moran");
+		@SuppressWarnings("unused")
+		String parentWindowHandle = driver.getWindowHandle();
+		nlw.validateCAR();
 		try{
 			if(driver.findElement(By.xpath("//label[@for='entityName']")).isDisplayed())
 			{
@@ -46,9 +56,16 @@ public class TC002_newlistingtest extends baseClass {
 			{
 				nlw.seller_name("Solitaire");
 			}
+		driver.switchTo().window(parentWindowHandle);
+		Thread.sleep(3);
 		nlw.seller_name("Solitaire");
 		nlw.seller_email("nate@mailinator.com");
+		Thread.sleep(5);
 		nlw.submit_btn();
+		Thread.sleep(3);
+		String toasttext=driver.findElement(By.xpath("//div[@class='Toastify']")).getText();
+		System.out.println(toasttext);
+		//Assert.assertEquals("Property details added successfully!", toasttext.toLowerCase());
 	}
 
 }

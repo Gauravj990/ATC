@@ -50,6 +50,19 @@ WebDriver driver;
 	@FindBy(xpath="//button[normalize-space()='Continue']")
 	WebElement continue_btn;
 	
+	@FindBy(xpath="//input[@value='I-0']")
+	WebElement checkbox1;
+	
+	@FindBy(xpath="//input[@value='I-1']")
+	WebElement checkbox2;
+	
+	@FindBy(xpath="//input[@id='I_text']")
+	WebElement description_I1;
+	
+	@FindBy(xpath="//input[@value='I-2']")
+	WebElement checkbox3;
+	
+	
 	@FindBy(xpath="//button[contains(text(),'Save & Next')]")
 	WebElement saveandnext_btn;
 	
@@ -142,6 +155,27 @@ WebDriver driver;
 	{
 		continue_btn.click();
 	}
+	
+	public void question_I0()
+	{
+		checkbox1.click();
+	}
+	
+	public void question_I1()
+	{
+		checkbox2.click();
+	}
+	
+	public void question_I1_description(String description)
+	{
+		description_I1.sendKeys(description);
+	}
+	
+	public void question_I3()
+	{
+		checkbox3.click();
+	}
+	
 	
 	public void Q1()
 	{

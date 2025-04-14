@@ -23,7 +23,7 @@ public class sendemailtoseller extends baseClass {
 	@FindBy(xpath="//span[normalize-space()='All Transactions']")
 	WebElement Alltransactions;
 	
-	@FindBy(xpath="//tbody/tr[1]/td[2]")
+	@FindBy(xpath="//tbody/tr[1]/td[1]")
 	WebElement selecttransaction;
 	
 	@FindBy(xpath="//button[normalize-space()='Send Email to Seller']")

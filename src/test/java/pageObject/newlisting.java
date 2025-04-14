@@ -26,7 +26,8 @@ public class newlisting extends baseClass{
 	@FindBy(xpath="//label[normalize-space()='New Listing']")
 	WebElement new_listing_radio_btn;
 	
-	@FindBy(xpath="//input[@class='autocomplete-input !px-4 !py-2 !text-base !placeholder !placeholder-gray-400 !placeholder-opacity-90 disabled:bg-[#f3f4f6]']")
+	//@FindBy(xpath="//input[@class='autocomplete-input !px-4 !py-2 !text-base !placeholder !placeholder-gray-400 !placeholder-opacity-90 disabled:bg-[#f3f4f6]']")
+	@FindBy(xpath="//body/div[@id='__nuxt']/div[1]/div[1]/div[3]/div[1]/div[2]/div[1]/div[1]/form[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
 	WebElement property_location;
 	
 	@FindBy(xpath="//select[@id='propertyType']")
@@ -47,8 +48,17 @@ public class newlisting extends baseClass{
 	@FindBy(xpath="//input[@id='entityTitle']")
 	WebElement entity_title;
 	
-	@FindBy(xpath="//button[normalize-space()='Submit']")
+	@FindBy(xpath="//input[@id='nrdsNo']")
+	WebElement CAR;
+	
+	@FindBy(xpath="//input[@id='carLastName']")
+	WebElement CARlastname;
+	
+	@FindBy(xpath="//button[@type='submit']")
 	WebElement submit_btn;
+	
+	@FindBy(xpath="//button[normalize-space()='Validate']")
+	WebElement validate_btn;
 	
 	public void enterusername(String user)
 	{
@@ -114,7 +124,21 @@ public class newlisting extends baseClass{
 		submit_btn.click();
 		
 	}
+	
+	public void enterCARnumber(String num)
+	{
+		CAR.sendKeys(num);
+	}
+	
+	public void enterCARname(String name)
+	{
+		CARlastname.sendKeys(name);
+	}
 
+	public void validateCAR()
+	{
+		validate_btn.click();
+	}
 	
 }
 
