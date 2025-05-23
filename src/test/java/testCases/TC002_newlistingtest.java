@@ -23,7 +23,7 @@ public class TC002_newlistingtest extends baseClass {
 		nlw.login();
 		nlw.newtransaction();
 		nlw.newtransactionradio();
-		nlw.enter_property("61 Vernon Street, Livermore CA 94550");
+		nlw.enter_property("69 Vernon Street, Livermore CA 94550");
 		driver.findElement(By.xpath("//div[@class='search-btn']//*[name()='svg']")).click();
 		driver.findElement(By.xpath("//span[@class='suggestion-text']")).click();
 		

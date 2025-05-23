@@ -22,11 +22,12 @@ public class TC009_CSPform extends baseClass{
 		csp.login_btn();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//button[contains(text(),'Get Started')])[1]")));	
 		csp.getstarted_btn();
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(text(),'Start Here')])[1]")));
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[name()='svg'][@class='cursor-pointer'])[1]")));
 		try {
 		
-		if(driver.findElement(By.xpath("(//span[contains(text(),'Start Here')])[1]")).isDisplayed());
-		driver.findElement(By.xpath("//span[contains(text(),'Start Here')])[1]")).click();
+		if(driver.findElement(By.xpath("(//*[name()='svg'][@class='cursor-pointer'])[1]")).isDisplayed());
+		driver.findElement(By.xpath("(//*[name()='svg'][@class='cursor-pointer'])[1]")).click();
 		}
 		catch(Exception E)
 		{
@@ -44,7 +45,7 @@ public class TC009_CSPform extends baseClass{
 			System.out.println("Checkbox already selected");
 		}
 		Thread.sleep(2000);
-		for(int i=1; i<=68; i++)
+		for(int i=1; i<=67; i++)
 		{
 			try {
 				wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@value='No']")));
